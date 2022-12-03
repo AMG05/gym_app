@@ -12,7 +12,7 @@ import repositories.member_repository as member_repository
 # booking_repository.delete_all()
 # exercise_class_repository.delete_all()
 # instructor_repository.delete_all()
-# member_repository.delele_all()
+# member_repository.delete_all()
 
 member1 = Member('Natalie Webster', 35, 'premium')
 member_repository.save(member1)
@@ -24,16 +24,16 @@ member3 = Member('Melanie Heskett', 32, 'premium')
 member_repository.save(member3)
 
 
-exercise_class1 = Exercise_class('Yoga', 'Hatha', '60 mins', '4/12/22', 20, 'instructor1')
+exercise_class1 = Exercise_class('Yoga', 'Hatha', '60 mins', '4/12/22', 20, 'instructor_id')
 exercise_class_repository.save(exercise_class1)
 
-exercise_class2 = Exercise_class('Circuits', 'Cardio', '45 mins', '4/12/22', 15, 'instructor2')
+exercise_class2 = Exercise_class('Circuits', 'Cardio', '45 mins', '4/12/22', 15, 'instructor_id')
 exercise_class_repository.save(exercise_class2)
 
-exercise_class3 = Exercise_class('Body Attack', 'Cardio', '55 mins', '5/12/22', 25)
+exercise_class3 = Exercise_class('Body Attack', 'Cardio', '55 mins', '5/12/22', 25, 'instructor_id')
 exercise_class_repository.save(exercise_class3)
 
-exercise_class4 = Exercise_class('Full Body Kettlebells', 'strength', '45 mins', '4/12/22', 12)
+exercise_class4 = Exercise_class('Full Body Kettlebells', 'strength', '45 mins', '4/12/22', 12, 'instructor_id')
 exercise_class_repository.save(exercise_class4)
 
 instructor1 = Instructor('Sarah', exercise_class1)

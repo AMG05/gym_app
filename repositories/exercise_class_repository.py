@@ -20,6 +20,8 @@ def select_all():
     sql = "SELECT * FROM exercise_classes"
     results = run_sql(sql)
     for row in results:
-        exercise_class = Exercise_class(row['name'], row['type'], row['duration'], row['date'], row['capacity'],row['instructor'],row['id'])
+        exercise_class = Exercise_class(row['name'], row['type'], row['duration'], row['date'], row['capacity'])
+        instructor = instructor_repository.select(row['instructor_id'])
+        exercise_class = Exercise_class(row['id'])
         exercise_classes.append(exercise_class)
     return exercise_class
