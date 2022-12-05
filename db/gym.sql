@@ -1,5 +1,4 @@
 DROP TABLE bookings;
-DROP TABLE instructors;
 DROP TABLE members;
 DROP TABLE exercise_classes;
 
@@ -10,12 +9,6 @@ CREATE TABLE members (
     age INT,
     membership_type VARCHAR(255),
     booked_classes VARCHAR(255)
-);
-
-CREATE TABLE instructors (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    exercise_class VARCHAR(255)
 );
 
 
