@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.member import Member
+from models.exercise_class import Exercise_class
 
 #To save a new member to a members table
 def save(member):
@@ -45,7 +46,8 @@ def exercise_classes(member):
     sql = "SELECT exercise_classes.* from exercise_classes INNER JOIN bookings ON booking.exercise_classes_id = exercise_classes.id WHERE member_id = %s"
     values = [member.id]
     results = run_sql(sql, values)
+    exercise_classes=[]
     for row in results:
-        exercise_class = Exercise_classes(row['name'], row['age'], row['membership_type'],row['id'])
+        exercise_class = Exercise_class(row['name'], row['type'], row['duration'],row['date'], row['capacity'], row['instructor'], row['id'])
         exercise_classes.append(exercise_class)
     return exercise_class

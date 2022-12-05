@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Exercise Classes</h1>
+
+<p class="btn--wrapper">
+    <a class="btn btn--action" href="/exerciseClasses/new">New classes</a>
+</p>
+
+<ul>
+    {% for exercise_class in exercise_classes %}
+   
+    <section>
+        <h3>{{ exercise_class.name }} - {{ exercise_class.type }} - {{ exercise_class.duration }} - {{exercise_class.date}} - {{exercise_class.capacity}} - {{exercise_class.instructor}}</h3>
+        <a href="/exerciseClasses/{{ exercise_class.id }}/edit">Edit</a>
+        <form action="/exerciseClasses/{{ exercise_class.id }}/delete" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+        <a href="/exerciseClasses/{{ exercise_class.id }}">Details</a>
+    </section>
+<table>
+    <tr></tr>
+</table>
+{% endfor %}
+    
+{% endblock %}

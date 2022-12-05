@@ -16,10 +16,11 @@ def select_all():
 
     sql = "SELECT * FROM exercise_classes"
     results = run_sql(sql)
+    exercise_classes = []
     for row in results:
         exercise_class = Exercise_class(row['name'], row['type'], row['duration'], row['date'], row['capacity'], row['instructor'], row['id'])
-        exercise_class.append(exercise_class)
-    return exercise_class
+        exercise_classes.append(exercise_class)
+    return exercise_classes
 
 def select(id):
     exercise_class = None
@@ -40,6 +41,7 @@ def member(exercise_class):
     sql = "SELECT exercise_classes.* from exercise_classes INNER JOIN members ON members.user_id = members.id WHERE exercise_classes_id = %s"
     values = [exercise_classes.id]
     results = run_sql(sql, values)
+    members = []
     for row in results:
         member = Member(row['name'], row['age'], row['membership_type'],row['id'])
         members.append(member)

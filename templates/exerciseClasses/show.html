@@ -1,0 +1,14 @@
+{% block content %}
+
+  <div>
+    <p>{{exercise_class.name}}</p>
+    <hr>
+    <p>{{exercise_class.type}}</p>
+    <p>{{exercise_class.duration}}</p>
+    <p>{{exercise_class.date}}</p>
+    <p>{{exercise_class.capacity}}</p>
+    <p>{{exercise_class.instructor}}</p>
+    <p><a href="/exerciseClasses/{{exercise_class.id}}/edit">Edit</a></p>
+  </div>
+
+{% endblock %}

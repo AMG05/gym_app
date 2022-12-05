@@ -1,0 +1,18 @@
+<h2> {{member.name }}</h2>
+<p> </p>
+
+{% block content %}
+
+  <div>
+    <p>{{member.name}}</p>
+    <hr>
+    <p>{{member.age}}</p>
+    <p>{{member.membership_type}}</p>
+    <p><a href="/members/{{members.id}}/edit">Edit</a></p>
+  </div>
+
+{% endblock %}
+<h1> {{member.name}}</h1>
+
+<p></p>
+{% endblock %}
