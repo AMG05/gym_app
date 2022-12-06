@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.member import Member
 import repositories.member_repository as member_repository
+import pdb
 
 member_blueprint = Blueprint("members", __name__)
 
@@ -39,12 +40,16 @@ def edit_member(member_id):
     return render_template('members/edit.html', member=member)
 
 @member_blueprint.route("/members/<member_id>", methods=["POST"])
-def update_member(id):
+def update(member_id):
     name = request.form["name"]
     age = request.form["age"]
     membership_type = request.form['membership_type']
-    member = Member(name, age, membership_type,id)
-    member_repository.update(member)
+    member_to_update = member_repository.select(member_id)
+    member_to_update.name = name
+    member_to_update.age = age
+    member_to_update.membership_type = membership_type
+    # pdb.set_trace()
+    member_repository.update(member_to_update)
     return redirect("/members")
 
 

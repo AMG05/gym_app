@@ -7,7 +7,6 @@ import repositories.member_repository as member_repository
 
 bookings_blueprint = Blueprint("bookings", __name__)
 
-
 @bookings_blueprint.route("/bookings")
 def bookings():
     bookings = booking_repository.select_all()
@@ -18,12 +17,13 @@ def bookings():
 def new_booking():
   exercise_classes = exercise_class_repository.select_all()
   members = member_repository.select_all()
-  return render_template("booking/new.html", exercise_classes = exercise_classes, members = members)
+  return render_template("bookings/new.html", exercise_classes = exercise_classes, members = members)
 
 @bookings_blueprint.route("/bookings", methods=["POST"])
 def create_booking():
   exercise_class_id = request.form["exercise_class_id"]
   member_id = request.form["member_id"]
+  
   exercise_classes = exercise_class_repository.select(exercise_class_id)
   member = member_repository.select(member_id)
   new_booking = Booking(exercise_classes, member)
@@ -39,8 +39,8 @@ def edit_booking(id):
 
 @bookings_blueprint.route("/booking/<id>", methods=["POST"])
 def update_booking(id):
-  exercise_class_id = request.form["exercise_class_id"]
-  member_id = request.form["member_id"]
+  exercise_class_id = request.form["exercise_classes_id"]
+  member_id = request.form["members_id"]
   exercise_classes = exercise_class_repository.select(exercise_class_id)
   member = member_repository.select(member_id)
   booking = Booking(exercise_classes, member, id)

@@ -54,8 +54,9 @@ def member(exercise_class):
 
 def update(exercise_class):
     sql = "UPDATE exercise_classes SET (name, type, duration, date, capacity, instructor) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
-    values = [exercise_class.name, exercise_class.type, exercise_class.duration, exercise_class.date, exercise_class.capacity, exercise_class.instructor]
+    values = [exercise_class.name, exercise_class.type, exercise_class.duration, exercise_class.date, exercise_class.capacity, exercise_class.instructor, exercise_class.id]
     run_sql(sql, values)
+
 
 def select_members_of_exercise_class(id):
   members = []

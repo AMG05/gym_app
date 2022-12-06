@@ -55,5 +55,5 @@ def exercise_classes(member):
 
 def update(member):
     sql = "UPDATE members SET (name, age, membership_type) = (%s, %s, %s) WHERE id = %s"
-    values = [member.name, member.age, member.membership_type]
+    values = [member.name, member.age, member.membership_type, member.id]
     run_sql(sql, values)

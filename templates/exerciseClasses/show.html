@@ -6,5 +6,12 @@
 
 <h3>Exercise Class:</h3>
 
+<p>Members booking in:</p>
+{% for member in member_list %}
+    <li>
+        {{members.name}}
+    </li>     
+{% endfor %}
+
 {% endblock %}
 

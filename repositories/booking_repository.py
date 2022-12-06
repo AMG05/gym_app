@@ -17,14 +17,12 @@ def save(booking):
 
 def select_all():
     bookings = []
-
     sql = "SELECT * FROM bookings"
     results = run_sql(sql)
-
     for row in results:
         exercise_class = exercise_class_repository.select(row['exercise_classes_id'])
         member = member_repository.select(row['members_id'])
-        booking = Booking(exercise_class, member, row['id]'])
+        booking = Booking(exercise_class, member, row['id'])
         bookings.append(booking)
     return bookings
 
@@ -32,11 +30,10 @@ def select(id):
     sql = "SELECT * FROM BOOKINGS where id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-    exercise_class = exercise_class_repository.select(result["exercise_class_id"])
-    member = member_repository.select(result["member_id"])
+    exercise_class = exercise_class_repository.select(result["exercise_classes_id"])
+    member = member_repository.select(result["members_id"])
     booking = Booking(exercise_class, member, result["id"])
     return booking
-
 
 def delete_all():
     sql = "DELETE FROM bookings"
@@ -48,6 +45,6 @@ def delete(id):
     run_sql(sql, values)
 
 def update(booking):
-    sql = "UPDATE bookings SET (exercise_class_id, member_id) = (%s, %s) WHERE id = %s"
+    sql = "UPDATE bookings SET (exercise_classes_id, members_id) = (%s, %s) WHERE id = %s"
     values = [booking.exercise_class.id, booking.member.id, booking.id]
     run_sql(sql, values)
