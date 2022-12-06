@@ -36,10 +36,11 @@ def delete_all():
     run_sql(sql)
 
 #To delete a member from a members table
-def delete_by_id(member_id):
+def delete(id):
     sql = "DELETE FROM members WHERE members.id = %s"
-    values = [member_id]
+    values = [id]
     run_sql(sql, values)
+
 
 def exercise_classes(member):
     exercise_classes = []

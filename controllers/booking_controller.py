@@ -26,7 +26,7 @@ def create_booking():
   member_id = request.form["member_id"]
   exercise_classes = exercise_class_repository.select(exercise_class_id)
   member = member_repository.select(member_id)
-  new_booking = Booking(exercise_class, member)
+  new_booking = Booking(exercise_classes, member)
   booking_repository.save(new_booking)
   return redirect("/bookings")
 

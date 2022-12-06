@@ -29,12 +29,17 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        exercise_class = Exercise_class(result['name'], result['type'], result['duration'], result['date'], result['capacity'], result['id'])
+        exercise_class = Exercise_class(result['name'], result['type'], result['duration'], result['date'], result['capacity'],result['instructor'], result['id'])
     return exercise_class
 
 def delete_all():
     sql = "DELETE FROM exercise_classes"
     run_sql(sql)
+
+def delete(id):
+    sql = "DELETE FROM exercise_classes WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
 
 def member(exercise_class):
     exercise_classes = []
@@ -48,8 +53,8 @@ def member(exercise_class):
     return members
 
 def update(exercise_class):
-    sql = "UPDATE exercise_classes SET (name, type, duration, date, capacity) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [exercise_class.name, exercise_class.type, exercise_class.duration, exercise_class.date, exercise_class.capacity]
+    sql = "UPDATE exercise_classes SET (name, type, duration, date, capacity, instructor) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
+    values = [exercise_class.name, exercise_class.type, exercise_class.duration, exercise_class.date, exercise_class.capacity, exercise_class.instructor]
     run_sql(sql, values)
 
 def select_members_of_exercise_class(id):
@@ -61,6 +66,9 @@ def select_members_of_exercise_class(id):
     member = Member(result["name"], result["age"], result["membership_type"])
     members.append(member)
   return members
+
+ 
+
 
   
 

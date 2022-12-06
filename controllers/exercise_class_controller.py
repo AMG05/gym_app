@@ -16,10 +16,15 @@ def new_exercise_class():
     exercise_classes = exercise_class_repository.select_all() # NEW
     return render_template("exerciseClasses/new.html", exercise_classes = exercise_classes)
 
-@exercise_class_blueprint.route("/exerciseClasses/<exercise_classes_id>")
-def get_exercise_class(exercise_class_id):
-    exercise_classes = exercise_class_repository.select(exercise_class_id)
-    return render_template("exerciseClasses/show.html", exercise_classes=exercise_classes)
+# @exercise_class_blueprint.route("/exerciseClasses/<exercise_classes_id>")
+# def get_exercise_class(exercise_class_id):
+#     exercise_classes = exercise_class_repository.select(exercise_class_id)
+#     return render_template("exerciseClasses/show.html", exercise_classes=exercise_classes)
+
+@exercise_class_blueprint.route("/exerciseClasses/<id>", methods=['GET'])
+def show_exercise_class(id):
+    exercise_class = exercise_class_repository.select(id)
+    return render_template('exerciseClasses/show.html', exercise_class = exercise_class)
 
 @exercise_class_blueprint.route("/exerciseClasses", methods=['POST'])
 def create_exercise_class():
@@ -37,11 +42,12 @@ def create_exercise_class():
 
 @exercise_class_blueprint.route("/exerciseClasses/<id>/edit")
 def edit_exercise_class(id):
-  exercise_classes = exercise_class_repository.select(id)
-  return render_template('exerciseClasses/edit.html',  exercise_classes = exercise_classes)
+  exercise_class = exercise_class_repository.select(id)
+  return render_template('exerciseClasses/edit.html',  exercise_class = exercise_class)
+
 
 @exercise_class_blueprint.route("/exerciseClasses/<id>", methods=['POST'])
-def update_exercise_class(id):
+def update(id):
   name = request.form['name']
   type = request.form['type']
   duration = request.form['duration']
