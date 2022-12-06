@@ -41,16 +41,16 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
-def member(exercise_class):
-    exercise_classes = []
-    sql = "SELECT exercise_classes.* from exercise_classes INNER JOIN members ON members.user_id = members.id WHERE exercise_classes_id = %s"
-    values = [exercise_classes.id]
-    results = run_sql(sql, values)
-    members = []
-    for row in results:
-        member = Member(row['name'], row['age'], row['membership_type'],row['id'])
-        members.append(member)
-    return members
+# def member(exercise_class):
+#     exercise_classes = []
+#     sql = "SELECT exercise_classes.* from exercise_classes INNER JOIN members ON members.user_id = members.id WHERE exercise_classes_id = %s"
+#     values = [exercise_class.id]
+#     results = run_sql(sql, values)
+#     members = []
+#     for row in results:
+#         member = Member(row['name'], row['age'], row['membership_type'],row['id'])
+#         members.append(member)
+#     return members
 
 def update(exercise_class):
     sql = "UPDATE exercise_classes SET (name, type, duration, date, capacity, instructor) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
@@ -58,13 +58,13 @@ def update(exercise_class):
     run_sql(sql, values)
 
 
-def select_members_of_exercise_class(id):
+def select_members_of_exercise_class(exercise_class_id):
   members = []
-  sql = "SELECT members.* FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE bookings.workout_id = %s"
-  values = [id]
+  sql = "SELECT members.* FROM members INNER JOIN bookings ON bookings.members_id = members.id WHERE exercise_classes_id = %s"
+  values = [exercise_class_id]
   results = run_sql(sql, values)
-  for result in results:
-    member = Member(result["name"], result["age"], result["membership_type"])
+  for row in results:
+    member = Member(row['name'], row['age'], row['membership_type'],row['id'])
     members.append(member)
   return members
 

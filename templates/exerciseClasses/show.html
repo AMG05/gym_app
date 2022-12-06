@@ -1,15 +1,15 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
+<h3>Exercise Class:</h3>
 <h1> {{exercise_class.name}} </h1>
 
-<h3>Exercise Class:</h3>
+
 
 <p>Members booking in:</p>
 {% for member in member_list %}
     <li>
-        {{members.name}}
+        {{member.name}}
     </li>     
 {% endfor %}
 

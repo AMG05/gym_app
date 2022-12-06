@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.exercise_class import Exercise_class
 import repositories.exercise_class_repository as exercise_class_repository
+import pdb
 
 exercise_class_blueprint = Blueprint("exerciseClasses", __name__)
 
@@ -24,7 +25,9 @@ def new_exercise_class():
 @exercise_class_blueprint.route("/exerciseClasses/<id>", methods=['GET'])
 def show_exercise_class(id):
     exercise_class = exercise_class_repository.select(id)
-    member_list=exercise_class_repository.member(exercise_class)
+ 
+    member_list=exercise_class_repository.select_members_of_exercise_class(exercise_class.id)
+    # pdb.set_trace()
     return render_template('exerciseClasses/show.html', exercise_class = exercise_class, member_list=member_list)
 
 @exercise_class_blueprint.route("/exerciseClasses", methods=['POST'])
