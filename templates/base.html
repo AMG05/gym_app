@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="fonts-loaded">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Platinum Gym</title>
 </head>
 <body>
+  
     <section id="content">
         {% block content %}
   
@@ -48,4 +50,18 @@
 
           </main>
 </body>
+<footer id="footer">
+        <p>&copy; Platinum Gym 2022</p>
+      </footer> <div>
+      <div id="footer_lists">
+       
+        <ul>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-instagram"></a>
+        </ul>
+       
+      </div>
+    </div>
+  </footer>
 </html>

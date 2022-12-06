@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 app.register_blueprint(member_blueprint)
 app.register_blueprint(exercise_class_blueprint)
+# app.register_blueprint(booking_blueprint)
 
 
 @app.route('/')

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+<h2>Edit a New Member</h2> 
+
+<form action="/members/{{member.id}}" method="post"></form>
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="name" required autofocus>
+    </div>
+
+    <div>
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" value="age" require autofocus>
+    </div>
+
+    <div>
+        <label for="membership_type">Membership type:</label>
+        <input type="text" id="membership_type" name="membership_type" value="membership_type" require autofocus>
+    </div>
+
+    <button type="submit">Update member information</button>
+</form>
+{% endblock %}

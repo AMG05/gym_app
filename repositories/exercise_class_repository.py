@@ -47,6 +47,23 @@ def member(exercise_class):
         members.append(member)
     return members
 
+def update(exercise_class):
+    sql = "UPDATE exercise_classes SET (name, type, duration, date, capacity) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [exercise_class.name, exercise_class.type, exercise_class.duration, exercise_class.date, exercise_class.capacity]
+    run_sql(sql, values)
+
+def select_members_of_exercise_class(id):
+  members = []
+  sql = "SELECT members.* FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE bookings.workout_id = %s"
+  values = [id]
+  results = run_sql(sql, values)
+  for result in results:
+    member = Member(result["name"], result["age"], result["membership_type"])
+    members.append(member)
+  return members
+
+  
+
 
 
 

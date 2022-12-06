@@ -51,3 +51,8 @@ def exercise_classes(member):
         exercise_class = Exercise_class(row['name'], row['type'], row['duration'],row['date'], row['capacity'], row['instructor'], row['id'])
         exercise_classes.append(exercise_class)
     return exercise_class
+
+def update(member):
+    sql = "UPDATE members SET (name, age, membership_type) = (%s, %s, %s) WHERE id = %s"
+    values = [member.name, member.age, member.membership_type]
+    run_sql(sql, values)

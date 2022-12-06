@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/exerciseClasses/{{exercise_class.id}}" method="POST">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="{{exercise_class.name}}" required>
+  </div>
+
+  <div>
+    <label for="type">Type:</label>
+    <input type="text" id="type" name="type">
+</div>
+
+<div>
+    <label for="duration">Duration:</label>
+    <input type="text" id="duration" name="duration">
+</div>
+
+<div>
+    <label for="date">Date:</label>
+    <input type="text" id="date" name="date">
+</div>
+
+<div>
+    <label for="capacity">Capacity:</label>
+    <input type="text" id="capacity" name="capacity">
+</div>
+
+<div>
+    <label for="instructor">Instructor:</label>
+    <input type="text" id="instructor" name="instructor">
+      
+</div>
+
+<button type="submit">Update Exercise Class</button>
+</form>
+{% endblock %}
+ 
+
+ 

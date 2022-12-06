@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+  <h2>Bookings</h2>
+
+  {% for booking in bookings %}
+
+  <section>
+    <p>{{booking.exercise_class.name}} : {{booking.member.name}} - {{booking.exercise_class.date}}</p>
+    <a href="/bookings/{{booking.id}}/edit">Edit Booking</a>
+    <form action="/bookings/{{booking.id}}/delete" method="POST">
+      <input type="submit" value="Delete">
+    </form>
+  </section>
+
+  {% endfor %}
+
+  <h3><a href="/bookings/book">Book a class</a></h3>
+
+{% endblock %}
