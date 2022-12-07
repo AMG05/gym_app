@@ -10,7 +10,7 @@
 <ul>
     {% for member in members %}
    
-    <section>
+    <section class="members_background">
         <h3>{{ member.name }} - {{ member.age }} - {{ member.membership_type }} </h3>
         <a href="/members/{{ member.id }}/edit">Edit</a>
         <form action="/members/{{ member.id }}/delete" method="POST">
